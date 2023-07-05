@@ -1,7 +1,30 @@
-import { state } from './state';
+import { reducer, store } from '../test/test.state';
+import { fold } from './state';
+import { tagDispatch } from './tag';
 
 describe('state', () => {
-  it('should work', () => {
-    expect(state()).toEqual('state');
+  const dispatch = fold(store, reducer);
+
+  it('updates for single bit', async () => {
+    await dispatch({ type: 'todos.add', text: 'test' });
+    expect(store.getState().todos).toEqual([{ text: 'test', done: false }]);
+
+    await dispatch({
+      type: 'auth.logout',
+      username: Object.keys(store.getState().logins)[0],
+    });
+    expect(store.getState().logins).toEqual({});
+  });
+
+  it('can tag a dispatch', () => {
+    const taggedDispatch = tagDispatch(dispatch, 'todos');
+
+    expect(taggedDispatch).toBeInstanceOf(Function);
+  });
+
+  it('can work when no reducer bit handles an action', async () => {
+    await dispatch({ type: 'doesnt.exist' });
+
+    expect(store.getState()).toBeTruthy();
   });
 });
