@@ -27,4 +27,5 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'html'],
   testEnvironment: 'jsdom',
   coverageDirectory: '../../coverage/packages/state',
+  collectCoverageFrom: ['src/**/*.ts', '!src/test/**/*'],
 };
