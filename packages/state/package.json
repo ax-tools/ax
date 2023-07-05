@@ -1,0 +1,13 @@
+{
+  "name": "@ax/state",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./src/index.js"
+    },
+    "./phasor": {
+      "require": "./src/lib/phasor/index.js"
+    }
+  }
+}
