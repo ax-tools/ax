@@ -40,3 +40,12 @@ Thumbs.db
 
 # Local ENVs
 .env.local
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
