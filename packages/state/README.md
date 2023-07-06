@@ -12,11 +12,11 @@ pnpm i -D -E @ax/state
 
 ## Introduction
 
-This library allows you to use stores created by libraries like [`zustand`](https://github.com/pmndrs/zustand) and use them with a reducer API. There is already a middleware created by `zustand` developers to do that, except this one allows reducers to be `async` functions. Read below to dig deeper into the concept behind it.
+This library allows you to use stores created by libraries like [`zustand`](https://github.com/pmndrs/zustand) with a reducer API. There is already a middleware created by `zustand` developers to do that, except this one allows reducers to be `async` functions.
 
 ## Concept
 
-This library allows for state management with reducers with one important change - reducers can be async functions. There is a lot of discussion and general consensus on why reducers cannot be "impure" (meaning - cant be async functions) but this library images "what if they were able to be".
+This library allows for state management with reducers with one important change - reducers can be async functions. There is a lot of discussion and general consensus on why reducers must not be "impure" (meaning - cant be async) functions, but this library tries to imagine "what if".
 
 Here is a gist of how the reducer API for this library is different from redux's reducer API -
 
