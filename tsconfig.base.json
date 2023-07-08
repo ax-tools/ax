@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ax/phasors": ["packages/phasors/src/index.ts"],
       "@ax/state": ["packages/state/src/index.ts"]
     }
   },
