@@ -1,4 +1,4 @@
-import { Phase, isOngoing } from '@ax/phasors';
+import { Phasor, isOngoing } from '@ax/phasors';
 import { ReducerBit } from '../state.api.types';
 import { getResult } from './get-result';
 import { getTriggerPayload } from './get-trigger-payload';
@@ -11,9 +11,7 @@ export function lazyBit<I, D, E, N extends string>(
   type dT = StateBit<I, D, E, N>;
 
   const init: dT = {
-    [name]: {
-      phase: Phase.ready,
-    },
+    [name]: Phasor.ready(),
   } as dT;
 
   const reducer: ReducerBit<
@@ -44,11 +42,7 @@ export function lazyBit<I, D, E, N extends string>(
         await dispatch({
           type: '://set',
           name,
-          phasor: {
-            phase: Phase.end,
-            input: action.input,
-            result,
-          },
+          phasor: Phasor.end(action.input, result),
         });
       }
     }
