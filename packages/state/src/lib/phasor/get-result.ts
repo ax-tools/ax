@@ -1,20 +1,14 @@
-import { Result, Kind } from '@ax/phasors';
+import { Result, ResultObject } from '@ax/phasors';
 import { Fetcher } from './lazy-bit.types';
 
 export async function getResult<I, D, E>(
   fetcher: Fetcher<I, D>,
   input: I
-): Promise<Result<D, E>> {
+): Promise<ResultObject<D, E>> {
   try {
     const result = await fetcher(input);
-    return {
-      status: Kind.Ok,
-      value: result,
-    };
+    return Result.Ok(result);
   } catch (error) {
-    return {
-      status: Kind.Err,
-      error: error as E,
-    };
+    return Result.Err(error as E);
   }
 }
