@@ -1,4 +1,4 @@
-import { Result } from './result.types';
+import { ResultObject } from './result.types';
 
 export const enum Phase {
   ready,
@@ -19,13 +19,13 @@ export type RunPhase<I> = {
 export type EndPhase<I, T, E> = {
   phase: Phase.end;
   input: I;
-  result: Result<T, E>;
+  result: ResultObject<T, E>;
 };
 
 export type RerunPhase<I, T, E> = {
   phase: Phase.rerun;
   input: I;
-  lastResult: Result<T, E>;
+  lastResult: ResultObject<T, E>;
 };
 
 export type Resting<I, T, E> = ReadyPhase | EndPhase<I, T, E>;
