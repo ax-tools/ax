@@ -1,36 +1,34 @@
-export type Phase = 'ready' | 'run' | 'done' | 'fail' | 'rerun';
+import { Result } from './result.types';
+
+export const enum Phase {
+  ready,
+  run,
+  end,
+  rerun,
+}
 
 export type ReadyPhase = {
-  phase: 'ready';
+  phase: Phase.ready;
 };
 
 export type RunPhase<I> = {
-  phase: 'run';
+  phase: Phase.run;
   input: I;
 };
 
-export type DonePhase<I, T> = {
-  phase: 'done';
+export type EndPhase<I, T, E> = {
+  phase: Phase.end;
   input: I;
-  result: T;
-};
-
-export type FailPhase<I, E> = {
-  phase: 'fail';
-  input: I;
-  error: E;
+  result: Result<T, E>;
 };
 
 export type RerunPhase<I, T, E> = {
-  phase: 'rerun';
+  phase: Phase.rerun;
   input: I;
-  result?: T;
-  error?: E;
+  lastResult: Result<T, E>;
 };
 
-export type Phasor<I, T, E> =
-  | ReadyPhase
-  | RunPhase<I>
-  | DonePhase<I, T>
-  | FailPhase<I, E>
-  | RerunPhase<I, T, E>;
+export type Resting<I, T, E> = ReadyPhase | EndPhase<I, T, E>;
+export type Ongoing<I, T, E> = RunPhase<I> | RerunPhase<I, T, E>;
+
+export type Phasor<I, T, E> = Resting<I, T, E> | Ongoing<I, T, E>;
