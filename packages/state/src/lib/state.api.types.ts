@@ -10,7 +10,7 @@ export type Reducer<T, A> = (
   dispatch: Dispatch<T, A>
 ) => ReducerReturn<T>;
 
-export type ReducerBit<T, A, dT, dA> = (
+export type ReducerBit<T, A, dT = T, dA = A> = (
   getState: () => T,
   action: dA,
   dispatch: Dispatch<T, A>

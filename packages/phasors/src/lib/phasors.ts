@@ -1,20 +1,38 @@
 import {
-  DonePhase,
-  FailPhase,
+  EndPhase,
+  Ongoing,
+  Phase,
   Phasor,
   ReadyPhase,
   RerunPhase,
+  Resting,
   RunPhase,
 } from './phasors.types';
 
-function isPhasor<I, T, E, P>(phasor: Phasor<I, T, E>, it: P) {
+function isIt<I, T, E>(phasor: Phasor<I, T, E>, it: Phase) {
   return phasor.phase === it;
 }
 
-export const isReady = <I, T, E>(phasor: Phasor<I, T, E>): phasor is ReadyPhase => isPhasor(phasor, 'ready');
-export const isRun = <I, T, E>(phasor: Phasor<I, T, E>): phasor is RunPhase<I> => isPhasor(phasor, 'run');
-export const isDone = <I, T, E>(phasor: Phasor<I, T, E>): phasor is DonePhase<I, T> => isPhasor(phasor, 'done');
-export const isFail = <I, T, E>(phasor: Phasor<I, T, E>): phasor is FailPhase<I, E> => isPhasor(phasor, 'fail');
-export const isRerun = <I, T, E>(phasor: Phasor<I, T, E>): phasor is RerunPhase<I, T, E> => isPhasor(phasor, 'rerun');
-export const isOngoing = <I, T, E>(phasor: Phasor<I, T, E>): phasor is RunPhase<I> | RerunPhase<I, T, E> => isRun(phasor) || isRerun(phasor);
-export const isSettled = <I, T, E>(phasor: Phasor<I, T, E>): phasor is DonePhase<I, T> | FailPhase<I, E> => isDone(phasor) || isFail(phasor);
+export const isReady = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is ReadyPhase => isIt(phasor, Phase.ready);
+
+export const isRunning = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is RunPhase<I> => isIt(phasor, Phase.run);
+
+export const isEnded = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is EndPhase<I, T, E> => isIt(phasor, Phase.end);
+
+export const isRerunning = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is RerunPhase<I, T, E> => isIt(phasor, Phase.rerun);
+
+export const isOngoing = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is Ongoing<I, T, E> => isRunning(phasor) || isRerunning(phasor);
+
+export const isResting = <I, T, E>(
+  phasor: Phasor<I, T, E>
+): phasor is Resting<I, T, E> => isReady(phasor) || isEnded(phasor);
