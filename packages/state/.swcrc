@@ -3,7 +3,7 @@
     "target": "es2020",
     "parser": {
       "syntax": "typescript",
-      "decorators": true,
+      "decorators": false,
       "dynamicImport": true
     },
     "transform": {
@@ -11,7 +11,7 @@
       "legacyDecorator": true
     },
     "keepClassNames": true,
-    "externalHelpers": true,
+    "externalHelpers": false,
     "loose": true
   },
   "module": {
