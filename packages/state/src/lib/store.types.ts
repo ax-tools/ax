@@ -10,7 +10,7 @@ export type SetStateInternal<T> = {
       | {
           _(state: T): T | Partial<T>;
         }['_'],
-    replace?: boolean | undefined
+    replace?: boolean | undefined,
   ): void;
 }['_'];
 
