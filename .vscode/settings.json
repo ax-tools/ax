@@ -1,5 +1,15 @@
 {
-  "cSpell.words": ["phasor", "phasors"],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "jest.jestCommandLine": "yarn jest"
+  "cSpell.words": [
+    "phasor",
+    "phasors"
+  ],
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "jest.jestCommandLine": "yarn jest",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
