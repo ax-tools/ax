@@ -1,10 +1,10 @@
-import { TodoActions, TodosBit } from './test.state.todoBit.types';
-import { MyReducerBit } from './test.state.types';
+import { Reducer } from '../lib/state.api.types';
+import { TodoActions } from './test.state.todoBit.types';
+import { State } from './test.state.types';
 
-export const todoReducerBit: MyReducerBit<TodosBit, TodoActions> = async (
+export const todoReducerBit: Reducer<State, TodoActions> = async (
   getState,
   action,
-  _dispatch
 ) => {
   if (
     action.type.startsWith('todos') &&
@@ -24,7 +24,7 @@ export const todoReducerBit: MyReducerBit<TodosBit, TodoActions> = async (
     case 'todos.toggle':
       return {
         todos: getState().todos.map((todo, index) =>
-          index === action.index ? { ...todo, done: !todo.done } : todo
+          index === action.index ? { ...todo, done: !todo.done } : todo,
         ),
       };
     case 'todos.remove':

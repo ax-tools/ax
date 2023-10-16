@@ -1,10 +1,10 @@
-import { AuthActions, AuthBit } from './test.state.authBit.types';
-import { MyReducerBit } from './test.state.types';
+import { Reducer } from '../lib/state.api.types';
+import { AuthActions } from './test.state.authBit.types';
+import { State } from './test.state.types';
 
-export const authReducerBit: MyReducerBit<AuthBit, AuthActions> = async (
+export const authReducerBit: Reducer<State, AuthActions> = async (
   getState,
   action,
-  _dispatch
 ) => {
   switch (action.type) {
     case 'auth.login':
