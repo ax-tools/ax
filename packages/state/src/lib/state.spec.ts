@@ -1,6 +1,7 @@
-import { reducer, store } from '../test/test.state';
 import { ax } from './state';
 import { tagDispatch } from './tag';
+
+import { reducer, store } from '../test/test.state';
 
 describe('state', () => {
   const dispatch = ax(store, reducer);
