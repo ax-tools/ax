@@ -1,6 +1,8 @@
-import { Phase, PhasorObject, Result, isEnded, isReady } from '@ax/phasors';
-import { Dispatch, Reducer } from '../state.api.types';
 import { PhasorActions, PhasorActionsInternal } from './phasorSlice.types';
+
+import { Dispatch, Reducer } from '../state.api.types';
+
+import { Phase, PhasorObject, Result, isEnded, isReady } from '@ax/phasors';
 
 export function phasorSlice<
   Name extends string,

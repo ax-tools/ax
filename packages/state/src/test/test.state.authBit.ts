@@ -1,6 +1,7 @@
-import { Reducer } from '../lib/state.api.types';
 import { AuthActions } from './test.state.authBit.types';
 import { State } from './test.state.types';
+
+import { Reducer } from '../lib/state.api.types';
 
 export const authReducerBit: Reducer<State, AuthActions> = async (
   getState,

@@ -1,6 +1,7 @@
-import { Reducer } from '../lib/state.api.types';
 import { TodoActions } from './test.state.todoBit.types';
 import { State } from './test.state.types';
+
+import { Reducer } from '../lib/state.api.types';
 
 export const todoReducerBit: Reducer<State, TodoActions> = async (
   getState,
