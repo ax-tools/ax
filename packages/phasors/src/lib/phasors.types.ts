@@ -31,4 +31,4 @@ export type RerunPhase<I, T, E> = {
 export type Resting<I, T, E> = ReadyPhase | EndPhase<I, T, E>;
 export type Ongoing<I, T, E> = RunPhase<I> | RerunPhase<I, T, E>;
 
-export type PhasorObject<I, T, E> = Resting<I, T, E> | Ongoing<I, T, E>;
+export type PhasorObject<I, T, E = Error> = Resting<I, T, E> | Ongoing<I, T, E>;
