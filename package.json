@@ -50,7 +50,7 @@
     "vite": "~4.4.9",
     "zustand": "4.4.2"
   },
-  "packageManager": "yarn@4.0.0-rc.52",
+  "packageManager": "yarn@4.0.0",
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
