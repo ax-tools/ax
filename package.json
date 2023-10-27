@@ -4,8 +4,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.23.0",
-    "@babel/preset-react": "^7.22.15",
+    "@babel/core": "7.23.2",
+    "@babel/preset-react": "7.22.15",
     "@emotion/babel-plugin": "11.11.0",
     "@nx/eslint-plugin": "16.10.0",
     "@nx/jest": "16.10.0",
